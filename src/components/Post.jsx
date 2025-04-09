@@ -1,6 +1,6 @@
 import React from 'react';
 import './Post.css'
-const Post = ({dataInfo}) => {
+const Post = ({dataInfo,handleDeletePost}) => {
     const {id,body,title}=dataInfo
     return (
         <div className='section-post'>
@@ -11,7 +11,7 @@ const Post = ({dataInfo}) => {
               
                 <div>
                 <button className='btn-edit'>Edit</button>
-                <button className='btn-delete'>Delete</button>
+                <button className='btn-delete' onClick={()=>handleDeletePost(id)}>Delete</button>
                 </div>
             </ul>
             
