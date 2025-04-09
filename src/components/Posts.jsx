@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { deletePost, getPost } from '../api/postApi';
 import Post from './Post';
 import "./posts.css"
+import Form from './Form';
 const Posts = () => {
 
     const [data,setData]=useState([])
@@ -37,6 +38,9 @@ const Posts = () => {
     return (
         <section className='section-posts'>
             <h1>Hello Post Page </h1>
+            <div className="form-section">
+        <Form data={data} setData={setData}></Form>
+            </div>
 
             <div className='all-posts'>
             {
