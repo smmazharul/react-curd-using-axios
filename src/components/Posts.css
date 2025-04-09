@@ -1,0 +1,18 @@
+.section-posts{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.all-posts{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px 10px; /* row gap = 25px, column gap = 10px */
+    padding: 10px;
+}
+
+@media screen {
+    
+}
