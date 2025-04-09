@@ -15,3 +15,6 @@ export const deletePost=(id)=>{
 export const postData=(post)=>{
     return api.post("/posts",post);
 }
+export const updatePost=(id,post)=>{
+    return api.put(`/posts/${id}`,post);
+}

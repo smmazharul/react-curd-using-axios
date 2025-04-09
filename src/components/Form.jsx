@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { postData } from "../api/postApi";
+import { postData, updatePost } from "../api/postApi";
 
 const Form = ({ data, setData,updateData,setUpdateData }) => {
   const [addData, setAddData] = useState({
@@ -47,9 +47,41 @@ const Form = ({ data, setData,updateData,setUpdateData }) => {
     }
   };
 
+  const updatePostData=async()=>{
+
+    try {
+        const res =await updatePost(updateData.id,addData)
+        console.log(res)
+
+        if(res.status===200){
+
+            setData((prev)=>{
+             return prev.map(curElem=>{
+                return curElem.id === res.data.id? res.data : curElem;
+             })
+            })
+
+            setAddData({
+                title: "",
+                body: "",
+              });
+              setUpdateData({})
+        }
+        
+    } catch (error) {
+        console.log(error)
+    }
+  }
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    addPostData();
+    const action = e.nativeEvent.submitter.value;
+    if(action==="Post"){
+        addPostData();
+
+    }else if(action==="Edit"){
+        updatePostData()
+    }
   };
 
   return (
