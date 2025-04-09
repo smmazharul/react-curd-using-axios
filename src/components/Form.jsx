@@ -20,7 +20,9 @@ const Form = ({ data, setData,updateData,setUpdateData }) => {
     });
   };
 
+ let isEmpty = Object.keys(updateData).length===0;
 
+//  get update data and add into input field
 
   useEffect(()=>{
     updateData && setAddData({
@@ -70,7 +72,7 @@ const Form = ({ data, setData,updateData,setUpdateData }) => {
         name="body"
         id="body"
       />
-      <button type="submit">Post</button>
+      <button type="submit" value={isEmpty? "Post": "Edit"}> {isEmpty? "Post": "Edit"}</button>
     </form>
   );
 };
