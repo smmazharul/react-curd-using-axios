@@ -6,7 +6,7 @@ import Form from './Form';
 const Posts = () => {
 
     const [data,setData]=useState([])
-   
+   const [updateData,setUpdateData]=useState({})
    
     
     const getPostData=async()=>{
@@ -28,6 +28,13 @@ const Posts = () => {
         }
     }
 
+
+    const handleUpdatePost=async(dataInfo)=>{
+        setUpdateData(dataInfo)
+        
+    }
+
+
   useEffect(()=>{
     getPostData()
   },[])
@@ -39,12 +46,12 @@ const Posts = () => {
         <section className='section-posts'>
             <h1>Hello Post Page </h1>
             <div className="form-section">
-        <Form data={data} setData={setData}></Form>
+        <Form data={data} setData={setData} setUpdateData={setUpdateData} updateData={updateData}></Form>
             </div>
 
             <div className='all-posts'>
             {
-                data.map((dataInfo )=><Post key={dataInfo.id} handleDeletePost={handleDeletePost} dataInfo={dataInfo}></Post>)
+                data.map((dataInfo )=><Post key={dataInfo.id} handleUpdatePost={handleUpdatePost} handleDeletePost={handleDeletePost} dataInfo={dataInfo}></Post>)
             }
             </div>
         </section>
